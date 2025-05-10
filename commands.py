@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import os
 import sys
 import time
@@ -7,14 +6,18 @@ import argparse
 import re
 import yaml
 
-# ─── Load the YAML definitions ────────────────────────────────────────────────
-DEFS_PATH = os.path.expanduser("~/dotfiles/definitions/commands.yaml")
-with open(DEFS_PATH, "r", encoding="utf-8") as f:
-    defs = yaml.safe_load(f)
+# ─── Load the YAML definitions (fixed to local path) ──────────────────────────
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFS_DIR = os.path.join(SCRIPT_DIR, "definitions")
 
-alias_help = {a["name"]: a["help"] for a in defs.get("aliases", [])}
-function_help = {fn["name"]: fn["help"] for fn in defs.get("functions", [])}
+with open(os.path.join(DEFS_DIR, "aliases.yml"), "r", encoding="utf-8") as f:
+    alias_defs = yaml.safe_load(f)
 
+with open(os.path.join(DEFS_DIR, "functions.yml"), "r", encoding="utf-8") as f:
+    func_defs = yaml.safe_load(f)
+
+alias_help = {a["name"]: a["help"] for a in alias_defs.get("aliases", [])}
+function_help = {fn["name"]: fn["help"] for fn in func_defs.get("functions", [])}
 
 # ─── Metadata‐driven “help” functions ────────────────────────────────────────
 def ag(pattern=None):
@@ -191,6 +194,40 @@ def ltf(depth, output_file="./ltf-output.txt"):
 
 
 # ─── fd / eza Pipelines ─────────────────────────────────────────────────────
+def ezaw(*args):
+    """
+    Wraps the eza command and expands --no=ptfu into individual flags.
+    Pass --getsizes to call 'getsizes' afterward on the last argument.
+    """
+    import subprocess
+
+    expanded_args = []
+    call_getsizes = False
+    path_target = "."
+
+    for arg in args:
+        if arg == "--getsizes":
+            call_getsizes = True
+        elif arg.startswith("--no="):
+            val = arg.split("=")[-1]
+            if "p" in val: expanded_args.append("--no-permissions")
+            if "t" in val: expanded_args.append("--no-time")
+            if "u" in val: expanded_args.append("--no-user")
+            if "f" in val: expanded_args.append("--no-filesize")
+        else:
+            expanded_args.append(arg)
+            if not arg.startswith("-"):
+                path_target = arg
+
+    try:
+        subprocess.run(["eza"] + expanded_args, check=True)
+        if call_getsizes:
+            subprocess.run(["getsizes", path_target], check=True)
+    except FileNotFoundError:
+        print("eza or getsizes not found.")
+    except subprocess.CalledProcessError as e:
+        print(f"[ezaw] Error: {e}")
+
 def fdtl(pattern):
     """Finds files by name, sorted by mod-time, then runs eza -lt."""
     raw = subprocess.check_output(["fd",pattern,"-t","f","--print0"], stderr=subprocess.DEVNULL)
@@ -208,7 +245,6 @@ def fdta(pattern):
     for f in files:
         print(f.decode())
     return 0
-
 
 # ─── ripgrep Variants ────────────────────────────────────────────────────────
 def rgcmd(args):
@@ -310,6 +346,8 @@ def rpdel(opts):
     """Copy then delete source files (rsync under the hood)."""
     return rp(["--remove-source-files"] + opts)
 
+
+
 # ─── Main dispatch ─────────────────────────────────────────────────────────
 def main():
     p = argparse.ArgumentParser(prog="dotcmd")
@@ -343,6 +381,7 @@ def main():
     p6 = subs.add_parser("ltf"); p6.add_argument("depth"); p6.add_argument("output_file", nargs="?", default="./ltf-output.txt")
 
     # fd/eza
+    subs.add_parser("ezaw").add_argument("pattern", nargs=argparse.REMAINDER)
     subs.add_parser("fdtl").add_argument("pattern")
     subs.add_parser("fdta").add_argument("pattern")
 
@@ -391,6 +430,7 @@ def main():
     if cmd == "ltf":             sys.exit(ltf(args.depth, args.output_file))
 
     # fd/eza
+    if cmd == "ezaw":            sys.exit(ezaw(*args.pattern))
     if cmd == "fdtl":            sys.exit(fdtl(args.pattern))
     if cmd == "fdta":            sys.exit(fdta(args.pattern))
 
