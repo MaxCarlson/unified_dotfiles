@@ -1,0 +1,121 @@
+# definitions/functions/search.yml
+functions:
+  - name: fdn
+    help: "Search for regular files."
+    body: dotcmd fdn $args
+
+  - name: fdd
+    help: "Search for directories."
+    body: dotcmd fdd $args
+
+  - name: fdx
+    help: "Include hidden files (ignoring .gitignore)."
+    body: dotcmd fdx $args
+
+  - name: fde
+    help: "Search for executables."
+    body: dotcmd fde $args
+
+  - name: fdpy
+    help: "Search for Python files."
+    body: dotcmd fdpy $args
+
+  - name: fdmd
+    help: "Search for Markdown files."
+    body: dotcmd fdmd $args
+
+  - name: fdjson
+    help: "Search for JSON files."
+    body: dotcmd fdjson $args
+
+  - name: fdlog
+    help: "Search for log files."
+    body: dotcmd fdlog $args
+
+  - name: fdr
+    help: "Search with regex."
+    body: dotcmd fdr $args
+
+  - name: fdgit
+    help: "Exclude .git directories."
+    body: dotcmd fdgit $args
+
+  - name: fdc
+    help: "Files changed within a specific time frame."
+    body: dotcmd fdc $args
+
+  - name: fdtree
+    help: "Display results in a tree format."
+    body: dotcmd fdtree $args
+
+  - name: rgn
+    help: "List all files."
+    body: dotcmd rgn $args
+
+  - name: rgh
+    help: "Search hidden files."
+    body: dotcmd rgh $args
+
+  - name: rgx
+    help: "Ignore .gitignore rules."
+    body: dotcmd rgx $args
+
+  - name: rgl
+    help: "Search with line numbers."
+    body: dotcmd rgl $args
+
+  - name: rgc
+    help: "Show match counts."
+    body: dotcmd rgc $args
+
+  - name: rgw
+    help: "Match whole words only."
+    body: dotcmd rgw $args
+
+  - name: rgs
+    help: "Smart case search."
+    body: dotcmd rgs $args
+
+  - name: rgv
+    help: "Invert match (exclude matches)."
+    body: dotcmd rgv $args
+
+  - name: rgjson
+    help: "Search JSON files."
+    body: dotcmd rgjson $args
+
+  - name: rgpy
+    help: "Search Python files."
+    body: dotcmd rgpy $args
+
+  - name: rglog
+    help: "Search log files."
+    body: dotcmd rglog $args
+
+  - name: rgmd
+    help: "Search Markdown files."
+    body: dotcmd rgmd $args
+
+  - name: rgp
+    help: "Show 3 lines of context."
+    body: dotcmd rgp $args
+
+  - name: rgp5
+    help: "Show 5 lines of context."
+    body: dotcmd rgp5 $args
+
+  - name: rgcsharp
+    help: "Search C# files."
+    body: dotcmd rgcsharp $args
+
+  - name: rge
+    help: "Regex-based search."
+    body: dotcmd rge $args
+
+  - name: agf
+    help: "Search functions by name/definition."
+    body: dotcmd agf $args
+
+  - name: agfh
+    help: "Search function help strings."
+    body: dotcmd agfh $args

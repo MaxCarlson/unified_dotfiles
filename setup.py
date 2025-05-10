@@ -1,55 +1,49 @@
-# setup.py - run from project root to generate and install dotfiles for PowerShell or Zsh
+# setup.py — generate & install the unified dotfiles
 
-import os
-import shutil
-import argparse
-import subprocess
-from pathlib import Path
+#!/usr/bin/env python3
+import argparse, subprocess, os, shutil
 
-parser = argparse.ArgumentParser(description="Generate and install unified dotfiles for PowerShell or Zsh.")
-parser.add_argument("--shell", "-s", required=True, choices=["powershell", "zsh"], help="Target shell type")
-parser.add_argument("--target", "-t", required=True, help="Path to place the config file (e.g. PowerShell profile or .zshrc.d dir)")
-parser.add_argument("--mode", "-m", choices=["copy", "symlink"], default="copy", help="Copy or symlink the file")
+parser = argparse.ArgumentParser(description="Generate & install unified dotfiles")
+parser.add_argument("--shell", "-s", required=True, choices=["zsh", "pwsh"])
+parser.add_argument("--target", "-t", required=True, help="Directory to install into")
+parser.add_argument("--mode", "-m", choices=["copy", "symlink"], default="copy")
 args = parser.parse_args()
 
-root_dir = Path(__file__).resolve().parent
-out_dir = root_dir / "out" / ("pwsh7" if args.shell == "powershell" else "linux")
-out_dir.mkdir(parents=True, exist_ok=True)
+root = os.path.dirname(os.path.abspath(__file__))
+out_dir = os.path.join(root, "out", args.shell)
+os.makedirs(out_dir, exist_ok=True)
 
-# ─── Generate the file ───────────────────────────────────────────────────────
-filename = f"unified.{ 'ps1' if args.shell == 'powershell' else 'zsh' }"
-gen_script = str(root_dir / "gen_dotfiles.py")
-temp_file = root_dir / filename
+# Generate the unified file
+print(f"Generating unified.{args.shell}...")
+subprocess.run(["python", os.path.join(root, "gen_dotfiles.py"), args.shell], check=True)
 
-print(f"Generating {filename}...")
-with open(temp_file, "w", encoding="utf-8") as f:
-    subprocess.run(["python", gen_script, args.shell], check=True, stdout=f)
+# Install unified.{ps1,zsh}
+fname = f"unified.{ 'ps1' if args.shell=='pwsh' else 'zsh' }"
+src = os.path.join(out_dir, fname)
+dst = os.path.join(os.path.abspath(args.target), fname)
+os.makedirs(os.path.abspath(args.target), exist_ok=True)
 
-# ─── Move generated file into output dir ─────────────────────────────────────
-if not temp_file.exists():
-    raise FileNotFoundError(f"Expected generated file {temp_file} not found.")
-shutil.move(str(temp_file), out_dir / filename)
+def install(src_path, dst_path):
+    if args.mode == "copy":
+        shutil.copy2(src_path, dst_path)
+    else:
+        if os.path.exists(dst_path):
+            os.remove(dst_path)
+        os.symlink(src_path, dst_path)
+    print(f" → {'Copied' if args.mode=='copy' else 'Linked'} {os.path.basename(dst_path)}")
 
-# ─── Install the generated file ──────────────────────────────────────────────
-target_dir = Path(args.target).expanduser().resolve()
-target_dir.mkdir(parents=True, exist_ok=True)
-dest = target_dir / filename
+print(f"Installing {fname} to {args.target} ({args.mode})")
+install(src, dst)
 
-print(f"Installing {filename} to {target_dir} using mode: {args.mode}\n")
+# Also install dotcmd_runner.py for pwsh
+if args.shell == "pwsh":
+    runner_src = os.path.join(out_dir, "dotcmd_runner.py")
+    runner_dst = os.path.join(args.target, "dotcmd_runner.py")
+    if os.path.exists(runner_src):
+        install(runner_src, runner_dst)
+    else:
+        print("WARNING: dotcmd_runner.py missing — dotcmd will fail")
 
-if args.mode == "copy":
-    shutil.copy(out_dir / filename, dest)
-elif args.mode == "symlink":
-    if dest.exists() or dest.is_symlink():
-        dest.unlink()
-    dest.symlink_to(out_dir / filename)
-
-print(f" → {'Copied' if args.mode == 'copy' else 'Linked'} {filename}")
-
-# ─── Show shell integration instructions ─────────────────────────────────────
-if args.shell == "powershell":
-    print(f"\nAdd the following line to your PowerShell profile:")
-    print(f". '{dest}'  # dot-source unified PS profile")
-else:
-    print(f"\nAdd the following to your ~/.zshrc:")
-    print(f"source '{dest}'  # unified zsh config")
+# Show how to hook it up
+hook = f". '{dst}'" if args.shell=="pwsh" else f"source '{dst}'"
+print(f"\nAdd this to your profile:\n  {hook}")

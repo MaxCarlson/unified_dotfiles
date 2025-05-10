@@ -1,0 +1,172 @@
+# definitions/aliases/cd_aliases.yml
+aliases:
+
+  # =============================================================================
+  # Common CD aliases (both zsh & pwsh)
+  # =============================================================================
+  - name: "-"
+    help: "Go back to previous directory"
+    cmd:
+      zsh: "cd -"
+      pwsh: "Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "1"
+    help: "Go back one directory in stack"
+    cmd:
+      zsh: "cd -1"
+      pwsh: "Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "2"
+    help: "Go back two directories in stack"
+    cmd:
+      zsh: "cd -2"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "3"
+    help: "Go back three directories in stack"
+    cmd:
+      zsh: "cd -3"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "4"
+    help: "Go back four directories in stack"
+    cmd:
+      zsh: "cd -4"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "5"
+    help: "Go back five directories in stack"
+    cmd:
+      zsh: "cd -5"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "6"
+    help: "Go back six directories in stack"
+    cmd:
+      zsh: "cd -6"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "7"
+    help: "Go back seven directories in stack"
+    cmd:
+      zsh: "cd -7"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "8"
+    help: "Go back eight directories in stack"
+    cmd:
+      zsh: "cd -8"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: "9"
+    help: "Go back nine directories in stack"
+    cmd:
+      zsh: "cd -9"
+      pwsh: "Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location; Pop-Location"
+    platforms: [zsh, pwsh]
+
+  - name: cdai
+    help: "Change to AI‑assistant project"
+    cmd:
+      zsh: "cd $AIASSISTANT"
+      pwsh: "Set-Location $env:AIASSISTANT"
+    platforms: [zsh, pwsh]
+
+  - name: cdb
+    help: "Change to Books directory"
+    cmd:
+      zsh: "cd $BOOKS"
+      pwsh: "Set-Location $env:BOOKS"
+    platforms: [zsh, pwsh]
+
+  - name: cdd
+    help: "Change to dotfiles directory"
+    cmd:
+      zsh: "cd $DOTFILES"
+      pwsh: "Set-Location $env:DOTFILES"
+    platforms: [zsh, pwsh]
+
+  - name: cddl
+    help: "Change to downloads directory"
+    cmd:
+      zsh: "cd $DOWNLOADS"
+      pwsh: "Set-Location $env:DOWNLOADS"
+    platforms: [zsh, pwsh]
+
+  - name: cdpj
+    help: "Change to projects directory"
+    cmd:
+      zsh: "cd $PROJECTS"
+      pwsh: "Set-Location $env:PROJECTS"
+    platforms: [zsh, pwsh]
+
+  - name: cds
+    help: "Change to scripts directory"
+    cmd:
+      zsh: "cd $SCRIPTS"
+      pwsh: "Set-Location $env:SCRIPTS"
+    platforms: [zsh, pwsh]
+
+  - name: cdobs
+    help: "Change to Obsidian vault"
+    cmd:
+      zsh: "cd $HOME/Obsidian-Vault"
+      pwsh: "Set-Location $HOME\\Documents\\Obsidian-Vault"
+    platforms: [zsh, pwsh]
+
+  # =============================================================================
+  # zsh‑only CD aliases
+  # =============================================================================
+  - name: cdr
+    help: "Change to Termux prefix"
+    cmd:
+      zsh: "cd /data/data/com.termux/files/usr"
+    platforms: [zsh]
+
+  - name: ncd
+    help: "Shortcut for n-cd in zsh"
+    cmd:
+      zsh: "n-cd"
+    platforms: [zsh]
+
+  # =============================================================================
+  # pwsh‑only CD aliases
+  # =============================================================================
+  - name: cdsrc
+    help: "Change to Repos root"
+    cmd:
+      pwsh: "Set-Location $HOME\\Repos"
+    platforms: [pwsh]
+
+  - name: cdpo
+    help: "Change to Pictures\\Saved"
+    cmd:
+      pwsh: "Set-Location D:\\Pictures\\Saved"
+    platforms: [pwsh]
+
+  - name: cdpon
+    help: "Change to tmpvids inside Pictures\\Saved"
+    cmd:
+      pwsh: "Set-Location D:\\Pictures\\Saved\\tmpvids"
+    platforms: [pwsh]
+
+  - name: cdtor
+    help: "Change to C:\\Torrents"
+    cmd:
+      pwsh: "Set-Location C:\\Torrents"
+    platforms: [pwsh]
+
+  - name: cdtord
+    help: "Change to D:\\Torrents"
+    cmd:
+      pwsh: "Set-Location D:\\Torrents"
+    platforms: [pwsh]

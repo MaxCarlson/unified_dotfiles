@@ -1,0 +1,1044 @@
+# definitions/aliases/git_aliases.yml
+aliases:
+  - name: fzgb
+    help: "Fuzzy git branch switch using fzf"
+    cmd: "git checkout $(git branch | fzf)"
+    platforms: [zsh, powershell]
+
+  - name: g
+    help: "Shorthand for git"
+    cmd: "git"
+    platforms: [zsh, powershell]
+
+  - name: ga
+    help: "git add"
+    cmd: "git add"
+    platforms: [zsh, powershell]
+
+  - name: gaa
+    help: "git add --all"
+    cmd: "git add --all"
+    platforms: [zsh, powershell]
+
+  - name: gam
+    help: "git am"
+    cmd: "git am"
+    platforms: [zsh, powershell]
+
+  - name: gama
+    help: "git am --abort"
+    cmd: "git am --abort"
+    platforms: [zsh, powershell]
+
+  - name: gamc
+    help: "git am --continue"
+    cmd: "git am --continue"
+    platforms: [zsh, powershell]
+
+  - name: gams
+    help: "git am --skip"
+    cmd: "git am --skip"
+    platforms: [zsh, powershell]
+
+  - name: gamscp
+    help: "git am --show-current-patch"
+    cmd: "git am --show-current-patch"
+    platforms: [zsh, powershell]
+
+  - name: gap
+    help: "git apply"
+    cmd: "git apply"
+    platforms: [zsh, powershell]
+
+  - name: gapa
+    help: "git add --patch"
+    cmd: "git add --patch"
+    platforms: [zsh, powershell]
+
+  - name: gapt
+    help: "git apply --3way"
+    cmd: "git apply --3way"
+    platforms: [zsh, powershell]
+
+  - name: gau
+    help: "git add --update"
+    cmd: "git add --update"
+    platforms: [zsh, powershell]
+
+  - name: gav
+    help: "git add --verbose"
+    cmd: "git add --verbose"
+    platforms: [zsh, powershell]
+
+  - name: gb
+    help: "git branch"
+    cmd: "git branch"
+    platforms: [zsh, powershell]
+
+  - name: gbD
+    help: "git branch --delete --force"
+    cmd: "git branch --delete --force"
+    platforms: [zsh, powershell]
+
+  - name: gba
+    help: "git branch --all"
+    cmd: "git branch --all"
+    platforms: [zsh, powershell]
+
+  - name: gbd
+    help: "git branch --delete"
+    cmd: "git branch --delete"
+    platforms: [zsh, powershell]
+
+  - name: gbg
+    help: "List gone branches"
+    cmd: "LANG=C git branch -vv | grep \": gone\\]\""
+    platforms: [zsh, powershell]
+
+  - name: gbgD
+    help: "Delete gone branches (force)"
+    cmd: > 
+      LANG=C git branch --no-color -vv \
+      | grep ": gone\\]" \
+      | cut -c 3- \
+      | awk '{print $1}' \
+      | xargs git branch -D
+    platforms: [zsh, powershell]
+
+  - name: gbgd
+    help: "Delete gone branches"
+    cmd: > 
+      LANG=C git branch --no-color -vv \
+      | grep ": gone\\]" \
+      | cut -c 3- \
+      | awk '{print $1}' \
+      | xargs git branch -d
+    platforms: [zsh, powershell]
+
+  - name: gbl
+    help: "git blame -w"
+    cmd: "git blame -w"
+    platforms: [zsh, powershell]
+
+  - name: gbm
+    help: "git branch --move"
+    cmd: "git branch --move"
+    platforms: [zsh, powershell]
+
+  - name: gbnm
+    help: "git branch --no-merged"
+    cmd: "git branch --no-merged"
+    platforms: [zsh, powershell]
+
+  - name: gbr
+    help: "git branch --remote"
+    cmd: "git branch --remote"
+    platforms: [zsh, powershell]
+
+  - name: gbs
+    help: "git bisect"
+    cmd: "git bisect"
+    platforms: [zsh, powershell]
+
+  - name: gbsb
+    help: "git bisect bad"
+    cmd: "git bisect bad"
+    platforms: [zsh, powershell]
+
+  - name: gbsg
+    help: "git bisect good"
+    cmd: "git bisect good"
+    platforms: [zsh, powershell]
+
+  - name: gbsn
+    help: "git bisect new"
+    cmd: "git bisect new"
+    platforms: [zsh, powershell]
+
+  - name: gbso
+    help: "git bisect old"
+    cmd: "git bisect old"
+    platforms: [zsh, powershell]
+
+  - name: gbsr
+    help: "git bisect reset"
+    cmd: "git bisect reset"
+    platforms: [zsh, powershell]
+
+  - name: gbss
+    help: "git bisect start"
+    cmd: "git bisect start"
+    platforms: [zsh, powershell]
+
+  - name: gc
+    help: "git commit --verbose"
+    cmd: "git commit --verbose"
+    platforms: [zsh, powershell]
+
+  - name: "gc!"
+    help: "git commit --verbose --amend"
+    cmd: "git commit --verbose --amend"
+    platforms: [zsh, powershell]
+
+  - name: gcB
+    help: "git checkout -B"
+    cmd: "git checkout -B"
+    platforms: [zsh, powershell]
+
+  - name: gca
+    help: "git commit --verbose --all"
+    cmd: "git commit --verbose --all"
+    platforms: [zsh, powershell]
+
+  - name: "gca!"
+    help: "git commit --verbose --all --amend"
+    cmd: "git commit --verbose --all --amend"
+    platforms: [zsh, powershell]
+
+  - name: gcam
+    help: "git commit --all --message"
+    cmd: "git commit --all --message"
+    platforms: [zsh, powershell]
+
+  - name: "gcan!"
+    help: "git commit --verbose --all --no-edit --amend"
+    cmd: "git commit --verbose --all --no-edit --amend"
+    platforms: [zsh, powershell]
+
+  - name: "gcann!"
+    help: "git commit --verbose --all --date=now --no-edit --amend"
+    cmd: "git commit --verbose --all --date=now --no-edit --amend"
+    platforms: [zsh, powershell]
+
+  - name: "gcans!"
+    help: "git commit --verbose --all --signoff --no-edit --amend"
+    cmd: "git commit --verbose --all --signoff --no-edit --amend"
+    platforms: [zsh, powershell]
+
+  - name: gcas
+    help: "git commit --all --signoff"
+    cmd: "git commit --all --signoff"
+    platforms: [zsh, powershell]
+
+  - name: gcasm
+    help: "git commit --all --signoff --message"
+    cmd: "git commit --all --signoff --message"
+    platforms: [zsh, powershell]
+
+  - name: gcb
+    help: "git checkout -b"
+    cmd: "git checkout -b"
+    platforms: [zsh, powershell]
+
+  - name: gcd
+    help: "git checkout $(git_develop_branch)"
+    cmd: "git checkout $(git_develop_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gcf
+    help: "git config --list"
+    cmd: "git config --list"
+    platforms: [zsh, powershell]
+
+  - name: gcl
+    help: "git clone --recurse-submodules"
+    cmd: "git clone --recurse-submodules"
+    platforms: [zsh, powershell]
+
+  - name: gclean
+    help: "git clean --interactive -d"
+    cmd: "git clean --interactive -d"
+    platforms: [zsh, powershell]
+
+  - name: gclf
+    help: "git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules"
+    cmd: >-
+      git clone --recursive --shallow-submodules --filter=blob:none \
+      --also-filter-submodules
+    platforms: [zsh, powershell]
+
+  - name: gcm
+    help: "git checkout $(git_main_branch)"
+    cmd: "git checkout $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gcmsg
+    help: "git commit --message"
+    cmd: "git commit --message"
+    platforms: [zsh, powershell]
+
+  - name: gcn
+    help: "git commit --verbose --no-edit"
+    cmd: "git commit --verbose --no-edit"
+    platforms: [zsh, powershell]
+
+  - name: "gcn!"
+    help: "git commit --verbose --no-edit --amend"
+    cmd: "git commit --verbose --no-edit --amend"
+    platforms: [zsh, powershell]
+
+  - name: gco
+    help: "git checkout"
+    cmd: "git checkout"
+    platforms: [zsh, powershell]
+
+  - name: gcor
+    help: "git checkout --recurse-submodules"
+    cmd: "git checkout --recurse-submodules"
+    platforms: [zsh, powershell]
+
+  - name: gcount
+    help: "git shortlog --summary --numbered"
+    cmd: "git shortlog --summary --numbered"
+    platforms: [zsh, powershell]
+
+  - name: gcp
+    help: "git cherry-pick"
+    cmd: "git cherry-pick"
+    platforms: [zsh, powershell]
+
+  - name: gcpa
+    help: "git cherry-pick --abort"
+    cmd: "git cherry-pick --abort"
+    platforms: [zsh, powershell]
+
+  - name: gcpc
+    help: "git cherry-pick --continue"
+    cmd: "git cherry-pick --continue"
+    platforms: [zsh, powershell]
+
+  - name: gcs
+    help: "git commit --gpg-sign"
+    cmd: "git commit --gpg-sign"
+    platforms: [zsh, powershell]
+
+  - name: gcsm
+    help: "git commit --signoff --message"
+    cmd: "git commit --signoff --message"
+    platforms: [zsh, powershell]
+
+  - name: gcss
+    help: "git commit --gpg-sign --signoff"
+    cmd: "git commit --gpg-sign --signoff"
+    platforms: [zsh, powershell]
+
+  - name: gcssm
+    help: "git commit --gpg-sign --signoff --message"
+    cmd: "git commit --gpg-sign --signoff --message"
+    platforms: [zsh, powershell]
+
+  - name: gd
+    help: "git diff"
+    cmd: "git diff"
+    platforms: [zsh, powershell]
+
+  - name: gdca
+    help: "git diff --cached"
+    cmd: "git diff --cached"
+    platforms: [zsh, powershell]
+
+  - name: gdct
+    help: "git describe --tags $(git rev-list --tags --max-count=1)"
+    cmd: "git describe --tags $(git rev-list --tags --max-count=1)"
+    platforms: [zsh, powershell]
+
+  - name: gdcw
+    help: "git diff --cached --word-diff"
+    cmd: "git diff --cached --word-diff"
+    platforms: [zsh, powershell]
+
+  - name: gdru
+    help: "git fetch && git diff HEAD..@{u}"
+    cmd: "git fetch && git diff HEAD..@{u}"
+    platforms: [zsh, powershell]
+
+  - name: gds
+    help: "git diff --staged"
+    cmd: "git diff --staged"
+    platforms: [zsh, powershell]
+
+  - name: gdsu
+    help: "git fetch && git diff HEAD...@{u}"
+    cmd: "git fetch && git diff HEAD...@{u}"
+    platforms: [zsh, powershell]
+
+  - name: gdt
+    help: "git diff-tree --no-commit-id --name-only -r"
+    cmd: "git diff-tree --no-commit-id --name-only -r"
+    platforms: [zsh, powershell]
+
+  - name: gdup
+    help: "git diff @{upstream}"
+    cmd: "git diff @{upstream}"
+    platforms: [zsh, powershell]
+
+  - name: gdw
+    help: "git diff --word-diff"
+    cmd: "git diff --word-diff"
+    platforms: [zsh, powershell]
+
+  - name: gf
+    help: "git fetch"
+    cmd: "git fetch"
+    platforms: [zsh, powershell]
+
+  - name: gfa
+    help: "git fetch --all --tags --prune --jobs=10"
+    cmd: "git fetch --all --tags --prune --jobs=10"
+    platforms: [zsh, powershell]
+
+  - name: gfg
+    help: "git ls-files | grep"
+    cmd: "git ls-files | grep"
+    platforms: [zsh, powershell]
+
+  - name: gfo
+    help: "git fetch origin"
+    cmd: "git fetch origin"
+    platforms: [zsh, powershell]
+
+  - name: gg
+    help: "git gui citool"
+    cmd: "git gui citool"
+    platforms: [zsh, powershell]
+
+  - name: gga
+    help: "git gui citool --amend"
+    cmd: "git gui citool --amend"
+    platforms: [zsh, powershell]
+
+  - name: ggpull
+    help: "git pull origin \"$(git_current_branch)\""
+    cmd: "git pull origin \"$(git_current_branch)\""
+    platforms: [zsh, powershell]
+
+  - name: ggpush
+    help: "git push origin \"$(git_current_branch)\""
+    cmd: "git push origin \"$(git_current_branch)\""
+    platforms: [zsh, powershell]
+
+  - name: ggsup
+    help: "git branch --set-upstream-to=origin/$(git_current_branch)"
+    cmd: "git branch --set-upstream-to=origin/$(git_current_branch)"
+    platforms: [zsh, powershell]
+
+  - name: ghh
+    help: "git help"
+    cmd: "git help"
+    platforms: [zsh, powershell]
+
+  - name: gignore
+    help: "git update-index --assume-unchanged"
+    cmd: "git update-index --assume-unchanged"
+    platforms: [zsh, powershell]
+
+  - name: gignored
+    help: "git ls-files -v | grep \"^[[:lower:]]\""
+    cmd: "git ls-files -v | grep \"^[[:lower:]]\""
+    platforms: [zsh, powershell]
+
+  - name: git-svn-dcommit-push
+    help: "git svn dcommit && git push github $(git_main_branch):svntrunk"
+    cmd: "git svn dcommit && git push github $(git_main_branch):svntrunk"
+    platforms: [zsh, powershell]
+
+  - name: gk
+    help: "\\gitk --all --branches &!"
+    cmd: "\\gitk --all --branches &!"
+    platforms: [zsh, powershell]
+
+  - name: gke
+    help: "\\gitk --all $(git log --walk-reflogs --pretty=%h) &!"
+    cmd: "\\gitk --all $(git log --walk-reflogs --pretty=%h) &!"
+    platforms: [zsh, powershell]
+
+  - name: gl
+    help: "git pull"
+    cmd: "git pull"
+    platforms: [zsh, powershell]
+
+  - name: glg
+    help: "git log --stat"
+    cmd: "git log --stat"
+    platforms: [zsh, powershell]
+
+  - name: glgg
+    help: "git log --graph"
+    cmd: "git log --graph"
+    platforms: [zsh, powershell]
+
+  - name: glgga
+    help: "git log --graph --decorate --all"
+    cmd: "git log --graph --decorate --all"
+    platforms: [zsh, powershell]
+
+  - name: glgm
+    help: "git log --graph --max-count=10"
+    cmd: "git log --graph --max-count=10"
+    platforms: [zsh, powershell]
+
+  - name: glgp
+    help: "git log --stat --patch"
+    cmd: "git log --stat --patch"
+    platforms: [zsh, powershell]
+
+  - name: glo
+    help: "git log --oneline --decorate"
+    cmd: "git log --oneline --decorate"
+    platforms: [zsh, powershell]
+
+  - name: glod
+    help: "pretty git log graph with colors"
+    cmd: "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset\""
+    platforms: [zsh, powershell]
+
+  - name: glods
+    help: "pretty git log graph (short date)"
+    cmd: >-
+      git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s \
+      %Cgreen(%ad) %C(bold blue)<%an>%Creset\" --date=short
+    platforms: [zsh, powershell]
+
+  - name: glog
+    help: "git log --oneline --decorate --graph"
+    cmd: "git log --oneline --decorate --graph"
+    platforms: [zsh, powershell]
+
+  - name: gloga
+    help: "git log --oneline --decorate --graph --all"
+    cmd: "git log --oneline --decorate --graph --all"
+    platforms: [zsh, powershell]
+
+  - name: glol
+    help: "pretty git log graph (relative time)"
+    cmd: "git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset\""
+    platforms: [zsh, powershell]
+
+  - name: glola
+    help: "pretty git log graph (relative, all)"
+    cmd: >-
+      git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s \
+      %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --all
+    platforms: [zsh, powershell]
+
+  - name: glols
+    help: "pretty git log graph with stats"
+    cmd: >-
+      git log --graph --pretty=\"%Cred%h%Creset -%C(auto)%d%Creset %s \
+      %Cgreen(%ar) %C(bold blue)<%an>%Creset\" --stat
+    platforms: [zsh, powershell]
+
+  - name: glp
+    help: "_git_log_prettily"
+    cmd: "_git_log_prettily"
+    platforms: [zsh, powershell]
+
+  - name: glru
+    help: "git fetch && git log --oneline --left-right --graph HEAD...@{u}"
+    cmd: "git fetch && git log --oneline --left-right --graph HEAD...@{u}"
+    platforms: [zsh, powershell]
+
+  - name: gluc
+    help: "git pull upstream $(git_current_branch)"
+    cmd: "git pull upstream $(git_current_branch)"
+    platforms: [zsh, powershell]
+
+  - name: glum
+    help: "git pull upstream $(git_main_branch)"
+    cmd: "git pull upstream $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gm
+    help: "git merge"
+    cmd: "git merge"
+    platforms: [zsh, powershell]
+
+  - name: gma
+    help: "git merge --abort"
+    cmd: "git merge --abort"
+    platforms: [zsh, powershell]
+
+  - name: gmc
+    help: "git merge --continue"
+    cmd: "git merge --continue"
+    platforms: [zsh, powershell]
+
+  - name: gmff
+    help: "git merge --ff-only"
+    cmd: "git merge --ff-only"
+    platforms: [zsh, powershell]
+
+  - name: gmom
+    help: "git merge origin/$(git_main_branch)"
+    cmd: "git merge origin/$(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gms
+    help: "git merge --squash"
+    cmd: "git merge --squash"
+    platforms: [zsh, powershell]
+
+  - name: gmtl
+    help: "git mergetool --no-prompt"
+    cmd: "git mergetool --no-prompt"
+    platforms: [zsh, powershell]
+
+  - name: gmtlvim
+    help: "git mergetool --no-prompt --tool=vimdiff"
+    cmd: "git mergetool --no-prompt --tool=vimdiff"
+    platforms: [zsh, powershell]
+
+  - name: gmum
+    help: "git merge upstream/$(git_main_branch)"
+    cmd: "git merge upstream/$(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gp
+    help: "git push"
+    cmd: "git push"
+    platforms: [zsh, powershell]
+
+  - name: gpd
+    help: "git push --dry-run"
+    cmd: "git push --dry-run"
+    platforms: [zsh, powershell]
+
+  - name: gpf
+    help: "git push --force-with-lease --force-if-includes"
+    cmd: "git push --force-with-lease --force-if-includes"
+    platforms: [zsh, powershell]
+
+  - name: "gpf!"
+    help: "git push --force"
+    cmd: "git push --force"
+    platforms: [zsh, powershell]
+
+  - name: gpnew
+    help: "git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+    cmd: "git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+    platforms: [zsh, powershell]
+
+  - name: gpoat
+    help: "git push origin --all && git push origin --tags"
+    cmd: "git push origin --all && git push origin --tags"
+    platforms: [zsh, powershell]
+
+  - name: gpod
+    help: "git push origin --delete"
+    cmd: "git push origin --delete"
+    platforms: [zsh, powershell]
+
+  - name: gpr
+    help: "git pull --rebase"
+    cmd: "git pull --rebase"
+    platforms: [zsh, powershell]
+
+  - name: gpra
+    help: "git pull --rebase --autostash"
+    cmd: "git pull --rebase --autostash"
+    platforms: [zsh, powershell]
+
+  - name: gprav
+    help: "git pull --rebase --autostash -v"
+    cmd: "git pull --rebase --autostash -v"
+    platforms: [zsh, powershell]
+
+  - name: gpristine
+    help: "git reset --hard && git clean --force -dfx"
+    cmd: "git reset --hard && git clean --force -dfx"
+    platforms: [zsh, powershell]
+
+  - name: gprom
+    help: "git pull --rebase origin $(git_main_branch)"
+    cmd: "git pull --rebase origin $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gpromi
+    help: "git pull --rebase=interactive origin $(git_main_branch)"
+    cmd: "git pull --rebase=interactive origin $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gprum
+    help: "git pull --rebase upstream $(git_main_branch)"
+    cmd: "git pull --rebase upstream $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gprumi
+    help: "git pull --rebase=interactive upstream $(git_main_branch)"
+    cmd: "git pull --rebase=interactive upstream $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gprv
+    help: "git pull --rebase -v"
+    cmd: "git pull --rebase -v"
+    platforms: [zsh, powershell]
+
+  - name: gpsup
+    help: "git push --set-upstream origin $(git_current_branch)"
+    cmd: "git push --set-upstream origin $(git_current_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gpsupf
+    help: "git push --set-upstream origin $(git_current_branch) --force-with-lease --force-if-includes"
+    cmd: "git push --set-upstream origin $(git_current_branch) --force-with-lease --force-if-includes"
+    platforms: [zsh, powershell]
+
+  - name: gpu
+    help: "git push upstream"
+    cmd: "git push upstream"
+    platforms: [zsh, powershell]
+
+  - name: gpv
+    help: "git push --verbose"
+    cmd: "git push --verbose"
+    platforms: [zsh, powershell]
+
+  - name: gr
+    help: "git remote"
+    cmd: "git remote"
+    platforms: [zsh, powershell]
+
+  - name: gra
+    help: "git remote add"
+    cmd: "git remote add"
+    platforms: [zsh, powershell]
+
+  - name: grao
+    help: "git remote add origin"
+    cmd: "git remote add origin"
+    platforms: [zsh, powershell]
+
+  - name: grb
+    help: "git rebase"
+    cmd: "git rebase"
+    platforms: [zsh, powershell]
+
+  - name: grba
+    help: "git rebase --abort"
+    cmd: "git rebase --abort"
+    platforms: [zsh, powershell]
+
+  - name: grbc
+    help: "git rebase --continue"
+    cmd: "git rebase --continue"
+    platforms: [zsh, powershell]
+
+  - name: grbd
+    help: "git rebase $(git_develop_branch)"
+    cmd: "git rebase $(git_develop_branch)"
+    platforms: [zsh, powershell]
+
+  - name: grbi
+    help: "git rebase --interactive"
+    cmd: "git rebase --interactive"
+    platforms: [zsh, powershell]
+
+  - name: grbm
+    help: "git rebase $(git_main_branch)"
+    cmd: "git rebase $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: grbo
+    help: "git rebase --onto"
+    cmd: "git rebase --onto"
+    platforms: [zsh, powershell]
+
+  - name: grbom
+    help: "git rebase origin/$(git_main_branch)"
+    cmd: "git rebase origin/$(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: grbs
+    help: "git rebase --skip"
+    cmd: "git rebase --skip"
+    platforms: [zsh, powershell]
+
+  - name: grbum
+    help: "git rebase upstream/$(git_main_branch)"
+    cmd: "git rebase upstream/$(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: grep
+    help: "grep --color=auto excluding VCS dirs"
+    cmd: "grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox,.venv,venv}"
+    platforms: [zsh, powershell]
+
+  - name: grev
+    help: "git revert"
+    cmd: "git revert"
+    platforms: [zsh, powershell]
+
+  - name: grf
+    help: "git reflog"
+    cmd: "git reflog"
+    platforms: [zsh, powershell]
+
+  - name: grh
+    help: "git reset"
+    cmd: "git reset"
+    platforms: [zsh, powershell]
+
+  - name: grhh
+    help: "git reset --hard"
+    cmd: "git reset --hard"
+    platforms: [zsh, powershell]
+
+  - name: grhk
+    help: "git reset --keep"
+    cmd: "git reset --keep"
+    platforms: [zsh, powershell]
+
+  - name: grhs
+    help: "git reset --soft"
+    cmd: "git reset --soft"
+    platforms: [zsh, powershell]
+
+  - name: grm
+    help: "git rm"
+    cmd: "git rm"
+    platforms: [zsh, powershell]
+
+  - name: grmc
+    help: "git rm --cached"
+    cmd: "git rm --cached"
+    platforms: [zsh, powershell]
+
+  - name: grmv
+    help: "git remote rename"
+    cmd: "git remote rename"
+    platforms: [zsh, powershell]
+
+  - name: groh
+    help: "git reset origin/$(git_current_branch) --hard"
+    cmd: "git reset origin/$(git_current_branch) --hard"
+    platforms: [zsh, powershell]
+
+  - name: grrm
+    help: "git remote remove"
+    cmd: "git remote remove"
+    platforms: [zsh, powershell]
+
+  - name: grs
+    help: "git restore"
+    cmd: "git restore"
+    platforms: [zsh, powershell]
+
+  - name: grset
+    help: "git remote set-url"
+    cmd: "git remote set-url"
+    platforms: [zsh, powershell]
+
+  - name: grss
+    help: "git restore --source"
+    cmd: "git restore --source"
+    platforms: [zsh, powershell]
+
+  - name: grst
+    help: "git restore --staged"
+    cmd: "git restore --staged"
+    platforms: [zsh, powershell]
+
+  - name: grt
+    help: "cd to repo top (via git rev-parse)"
+    cmd: "cd \"$(git rev-parse --show-toplevel || echo .)\""
+    platforms: [zsh, powershell]
+
+  - name: gru
+    help: "git reset --"
+    cmd: "git reset --"
+    platforms: [zsh, powershell]
+
+  - name: grup
+    help: "git remote update"
+    cmd: "git remote update"
+    platforms: [zsh, powershell]
+
+  - name: grv
+    help: "git remote --verbose"
+    cmd: "git remote --verbose"
+    platforms: [zsh, powershell]
+
+  - name: gsb
+    help: "git status --short --branch"
+    cmd: "git status --short --branch"
+    platforms: [zsh, powershell]
+
+  - name: gsd
+    help: "git svn dcommit"
+    cmd: "git svn dcommit"
+    platforms: [zsh, powershell]
+
+  - name: gsh
+    help: "git show"
+    cmd: "git show"
+    platforms: [zsh, powershell]
+
+  - name: gsi
+    help: "git submodule init"
+    cmd: "git submodule init"
+    platforms: [zsh, powershell]
+
+  - name: gsps
+    help: "git show --pretty=short --show-signature"
+    cmd: "git show --pretty=short --show-signature"
+    platforms: [zsh, powershell]
+
+  - name: gsr
+    help: "git svn rebase"
+    cmd: "git svn rebase"
+    platforms: [zsh, powershell]
+
+  - name: gss
+    help: "git status --short"
+    cmd: "git status --short"
+    platforms: [zsh, powershell]
+
+  - name: gst
+    help: "git status"
+    cmd: "git status"
+    platforms: [zsh, powershell]
+
+  - name: gsta
+    help: "git stash push"
+    cmd: "git stash push"
+    platforms: [zsh, powershell]
+
+  - name: gstaa
+    help: "git stash apply"
+    cmd: "git stash apply"
+    platforms: [zsh, powershell]
+
+  - name: gstall
+    help: "git stash --all"
+    cmd: "git stash --all"
+    platforms: [zsh, powershell]
+
+  - name: gstc
+    help: "git stash clear"
+    cmd: "git stash clear"
+    platforms: [zsh, powershell]
+
+  - name: gstd
+    help: "git stash drop"
+    cmd: "git stash drop"
+    platforms: [zsh, powershell]
+
+  - name: gstl
+    help: "git stash list"
+    cmd: "git stash list"
+    platforms: [zsh, powershell]
+
+  - name: gstp
+    help: "git stash pop"
+    cmd: "git stash pop"
+    platforms: [zsh, powershell]
+
+  - name: gsts
+    help: "git stash show --patch"
+    cmd: "git stash show --patch"
+    platforms: [zsh, powershell]
+
+  - name: gsu
+    help: "git submodule update"
+    cmd: "git submodule update"
+    platforms: [zsh, powershell]
+
+  - name: gsw
+    help: "git switch"
+    cmd: "git switch"
+    platforms: [zsh, powershell]
+
+  - name: gswc
+    help: "git switch --create"
+    cmd: "git switch --create"
+    platforms: [zsh, powershell]
+
+  - name: gswd
+    help: "git switch $(git_develop_branch)"
+    cmd: "git switch $(git_develop_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gswm
+    help: "git switch $(git_main_branch)"
+    cmd: "git switch $(git_main_branch)"
+    platforms: [zsh, powershell]
+
+  - name: gsy
+    help: "git_sync script"
+    cmd: "/data/data/  
+      termux/files/home/scripts/bin/git_sync"
+    platforms: [zsh, powershell]
+
+  - name: gta
+    help: "git tag --annotate"
+    cmd: "git tag --annotate"
+    platforms: [zsh, powershell]
+
+  - name: gtl
+    help: "gtl() { git tag --sort=-v:refname -n --list \"${1}*\" }; noglob gtl"
+    cmd: "gtl(){ git tag --sort=-v:refname -n --list \"${1}*\" }; noglob gtl"
+    platforms: [zsh, powershell]
+
+  - name: gts
+    help: "git tag --sign"
+    cmd: "git tag --sign"
+    platforms: [zsh, powershell]
+
+  - name: gtv
+    help: "git tag | sort -V"
+    cmd: "git tag | sort -V"
+    platforms: [zsh, powershell]
+
+  - name: gunignore
+    help: "git update-index --no-assume-unchanged"
+    cmd: "git update-index --no-assume-unchanged"
+    platforms: [zsh, powershell]
+
+  - name: gunwip
+    help: "git reset WIP commit"
+    cmd: >-
+      git rev-list --max-count=1 --format="%s" HEAD \
+      | grep -q "--wip--" && git reset HEAD~1
+    platforms: [zsh, powershell]
+
+  - name: gwch
+    help: "git whatchanged -p"
+    cmd: "git whatchanged -p --abbrev-commit --pretty=medium"
+    platforms: [zsh, powershell]
+
+  - name: gwip
+    help: "quick WIP commit"
+    cmd: >-
+      git add -A; git rm $(git ls-files --deleted) 2>/dev/null; \
+      git commit --no-verify --no-gpg-sign --message "--wip-- [skip ci]"
+    platforms: [zsh, powershell]
+
+  - name: gwipe
+    help: "git reset --hard && clean"
+    cmd: "git reset --hard && git clean --force -df"
+    platforms: [zsh, powershell]
+
+  - name: gwt
+    help: "git worktree"
+    cmd: "git worktree"
+    platforms: [zsh, powershell]
+
+  - name: gwta
+    help: "git worktree add"
+    cmd: "git worktree add"
+    platforms: [zsh, powershell]
+
+  - name: gwtls
+    help: "git worktree list"
+    cmd: "git worktree list"
+    platforms: [zsh, powershell]
+
+  - name: gwtmv
+    help: "git worktree move"
+    cmd: "git worktree move"
+    platforms: [zsh, powershell]
+
+  - name: gwtrm
+    help: "git worktree remove"
+    cmd: "git worktree remove"
+    platforms: [zsh, powershell]
