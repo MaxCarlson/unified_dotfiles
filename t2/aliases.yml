@@ -1,0 +1,281 @@
+# definitions/aliases.yaml
+aliases:
+  - name: fnrg
+    help: "List all functions using compgen and ripgrep."
+    cmd: "compgen -A function | rg"
+    platforms: [zsh, powershell]
+
+  - name: hg
+    help: "Search command history using ripgrep."
+    cmd: "history | rg"
+    platforms: [zsh, powershell]
+
+  - name: lhg
+    help: "Search large history using lhistory and ripgrep."
+    cmd: "lhistory | rg"
+    platforms: [zsh, powershell]
+
+  - name: rm
+    help: "Move files to trash instead of deleting them."
+    cmd: "trash"
+    platforms: [zsh, powershell]
+
+  - name: bat
+    help: "bat command (as installed)."
+    cmd: "bat"
+    platforms: [zsh, powershell]
+
+  - name: l
+    help: "List files (eza): no permissions, git info, icons, no user info."
+    cmd: "ezaw --no-permissions --git --icons --no-user"
+    platforms: [zsh, powershell]
+
+  - name: ls
+    help: "List files in long format (eza): with permissions, git info, icons, modified time, smart grouping."
+    cmd: >
+      ezaw -lah --no-permissions --git --icons --modified
+      --group-directories-first --smart-group --no-user
+    platforms: [zsh, powershell]
+
+  - name: la
+    help: "List all files (eza): show hidden files with classify and grid view."
+    cmd: "ezaw -a --no-permissions --git --icons --classify --grid --group-directories-first"
+    platforms: [zsh, powershell]
+
+  - name: ll
+    help: "Long listing (eza): display created time, group directories first, smart grouping."
+    cmd: "ezaw -lah --no-permissions --git --icons --modified --group-directories-first --smart-group"
+    platforms: [zsh, powershell]
+
+  - name: lls
+    help: "Long listing (eza): display created time, group directories first, smart grouping, total-size."
+    cmd: "ezaw -lah --no-permissions --git --icons --modified --group-directories-first --smart-group --total-size"
+    platforms: [zsh, powershell]
+
+  - name: lll
+    help: "Long listing (eza): total size, created/modified times with icons and git info."
+    cmd: "ezaw -lah --git --icons --modified --accessed --group-directories-first --smart-group --total-size"
+    platforms: [zsh, powershell]
+
+  - name: llll
+    help: "Long listing (eza): total size, created/modified times with icons and git info."
+    cmd: >
+      ezaw -lah --all --header --group-directories-first --smart-group --icons --git
+      --time-style=iso --modified --accessed --changed --inode --links --sort=name
+      --reverse --hyperlink --absolute=on --blocksize --numeric
+    platforms: [zsh, powershell]
+
+  - name: lo
+    help: "List files (eza): without user, time, or filesize info."
+    cmd: "ezaw -lah --no-permissions --git --icons --no-user --no-time --no-filesize"
+    platforms: [zsh, powershell]
+
+  - name: lg
+    help: "List files (eza): with created & modified times and git repository info."
+    cmd: "ezaw -lah --no-permissions --git --icons --created --modified --group-directories-first --smart-group --git-repos"
+    platforms: [zsh, powershell]
+
+  - name: laha
+    help: "Advanced listing (eza): smart grouping with changed, accessed, and created times."
+    cmd: "ezaw -lahSOnMIHZo@ --git --git-repos --icons --smart-group --changed --accessed --created"
+    platforms: [zsh, powershell]
+
+  - name: lss
+    help: "Sort files by size using eza."
+    cmd: "ezaw --sort=size"
+    platforms: [zsh, powershell]
+
+  - name: lst
+    help: "Sort files by modification time using eza."
+    cmd: "ezaw --sort=time"
+    platforms: [zsh, powershell]
+
+  - name: lse
+    help: "Sort files by file extension using eza."
+    cmd: "ezaw --sort=extension"
+    platforms: [zsh, powershell]
+
+  - name: lx
+    help: "List files (eza): grid, classify, auto-color, sorted by type, with grouped directories."
+    cmd: >
+      ezaw --icons --grid --classify --colour=auto --sort=type
+      --group-directories-first --header --modified --created --git --binary --group
+    platforms: [zsh, powershell]
+
+  - name: l1
+    help: "Tree view (eza): list directory tree at level 1."
+    cmd: "ezaw --icons --classify --tree --level=1 --git"
+    platforms: [zsh, powershell]
+
+  - name: l2
+    help: "Tree view (eza): list directory tree at level 2."
+    cmd: "ezaw --icons --classify --tree --level=2 --git"
+    platforms: [zsh, powershell]
+
+  - name: l3
+    help: "Tree view (eza): list directory tree at level 3."
+    cmd: "ezaw --icons --classify --tree --level=3 --git"
+    platforms: [zsh, powershell]
+
+  - name: l4
+    help: "Tree view (eza): list directory tree at level 4."
+    cmd: "ezaw --icons --classify --tree --level=4 --git"
+    platforms: [zsh, powershell]
+
+  - name: l5
+    help: "Tree view (eza): list directory tree at level 5."
+    cmd: "ezaw --icons --classify --tree --level=5 --git"
+    platforms: [zsh, powershell]
+
+  - name: lt1
+    help: "Long tree view (eza): directory tree at level 1."
+    cmd: "ezaw --icons --classify --long --tree --level=1 --git"
+    platforms: [zsh, powershell]
+
+  - name: lt2
+    help: "Long tree view (eza): directory tree at level 2."
+    cmd: "ezaw --icons --classify --long --tree --level=2 --git"
+    platforms: [zsh, powershell]
+
+  - name: lt3
+    help: "Long tree view (eza): directory tree at level 3."
+    cmd: "ezaw --icons --classify --long --tree --level=3 --git"
+    platforms: [zsh, powershell]
+
+  - name: lt4
+    help: "Long tree view (eza): directory tree at level 4."
+    cmd: "ezaw --icons --classify --long --tree --level=4 --git"
+    platforms: [zsh, powershell]
+
+  - name: lt5
+    help: "Long tree view (eza): directory tree at level 5."
+    cmd: "ezaw --icons --classify --long --tree --level=5 --git"
+    platforms: [zsh, powershell]
+
+  - name: gpnew
+    help: "Git push new branch: set upstream to origin on current branch."
+    cmd: "git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+    platforms: [zsh, powershell]
+
+  - name: pcolors
+    help: "Print terminal colors (0-255) using a loop."
+    cmd:
+      zsh: |
+        for i in {0..255}; do
+          print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " \
+            ${${(M)$((i%6)):#3}:+$'\n'};
+        done
+      powershell: |
+        for ($i=0; $i -le 255; $i++) {
+          Write-Host $("  " * $i) -NoNewline
+          if ($i % 6 -eq 0) { Write-Host "" }
+        }
+    platforms: [zsh, powershell]
+
+  - name: fzcd
+    help: "Fuzzy find a directory and cd into it."
+    cmd:
+      zsh: "cd $(find . -type d | fzf)"
+      powershell: "Set-Location (Get-ChildItem -Directory -Recurse | fzf).FullName"
+    platforms: [zsh, powershell]
+
+  - name: fzcdp
+    help: "Fuzzy find a directory with a tree preview and cd into it."
+    cmd:
+      zsh: 'cd $(find . -type d | fzf --preview "tree -C {} | head -200")'
+      powershell: |
+        Set-Location (Get-ChildItem -Directory -Recurse `
+          | fzf --preview "Get-ChildItem {} -Recurse")
+    platforms: [zsh, powershell]
+
+  - name: fzh
+    help: "Fuzzy search command history using fzf."
+    cmd:
+      zsh: 'fzf --height 40% --reverse --preview "echo {}" --tac < <(history | cut -c 8-)'
+      powershell: 'Get-History | Select-Object -ExpandProperty CommandLine | fzf'
+    platforms: [zsh, powershell]
+
+  - name: fzfp
+    help: "Fuzzy file finder with bat preview."
+    cmd: 'fzf --preview "bat --style=numbers --color=always {}"'
+    platforms: [zsh, powershell]
+
+  - name: fzkill
+    help: "Fuzzy find a process and kill it."
+    cmd:
+      zsh: 'kill -9 $(ps -ef | fzf --preview "echo {}" | awk "{print \$2}")'
+      powershell: 'Get-Process | fzf --preview { $_ } | % { Stop-Process $_.Id -Force }'
+    platforms: [zsh, powershell]
+
+  - name: fzssh
+    help: "Fuzzy SSH: select a hostname from known_hosts."
+    cmd:
+      zsh: 'ssh $(cut -f1 -d" " ~/.ssh/known_hosts | fzf)'
+      powershell: 'ssh (Get-Content ~/.ssh/known_hosts | % { $_.Split(" ")[0] } | fzf)'
+    platforms: [zsh, powershell]
+
+  - name: fzgb
+    help: "Fuzzy git branch switch using fzf."
+    cmd: "git checkout $(git branch | fzf)"
+    platforms: [zsh, powershell]
+
+  - name: grao
+    help: "Add a new git remote called origin."
+    cmd: "git remote add origin"
+    platforms: [zsh, powershell]
+
+  - name: gdup
+    help: "Fetch. Diff of changes to remote branch if local was pushed."
+    cmd:
+      zsh: "git fetch && git diff @{u}..HEAD"
+      powershell: "git fetch; git diff @{u}..HEAD"
+    platforms: [zsh, powershell]
+
+  - name: gdru
+    help: "Fetch. Diff of changes to local branch if remote was pulled."
+    cmd:
+      zsh: "git fetch && git diff HEAD..@{u}"
+      powershell: "git fetch; git diff HEAD..@{u}"
+    platforms: [zsh, powershell]
+
+  - name: gdsu
+    help: "Fetch. Diff of local and remote (combined)."
+    cmd:
+      zsh: "git fetch && git diff HEAD...@{u}"
+      powershell: "git fetch; git diff HEAD...@{u}"
+    platforms: [zsh, powershell]
+
+  - name: glru
+    help: "Fetch, then a commit-by-commit visual log of differences."
+    cmd:
+      zsh: "git fetch && git log --oneline --left-right --graph HEAD...@{u}"
+      powershell: "git fetch; git log --oneline --left-right --graph HEAD...@{u}"
+    platforms: [zsh, powershell]
+
+  - name: lsopts
+    help: "Print a list of all 'opt' values possible to set via 'setopt xxx'."
+    cmd:
+      zsh: "print -rl ${(k)options}"
+      powershell: "Get-Variable -Scope Global | Where-Object { $_.Name -eq 'options' } | % { $_.Value.Keys }"
+    platforms: [zsh, powershell]
+
+  - name: sshs
+    help: "SSH into slice and run arbitrary commands."
+    cmd: "sshsx"
+    platforms: [zsh, powershell]
+
+  - name: sshsx
+    help: "SSH into slice via pwsh7 and run arbitrary commands."
+    cmd: "sshsx"
+    platforms: [zsh, powershell]
+
+  - name: sshsp
+    help: "SSH into slice and run cdpon."
+    cmd: "sshsx cdpo"
+    platforms: [zsh, powershell]
+
+  - name: sshspn
+    help: "SSH into slice and run cdpon."
+    cmd: "sshsx cdpon"
+    platforms: [zsh, powershell]
+

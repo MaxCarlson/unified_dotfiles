@@ -1,0 +1,453 @@
+aliases:
+  - name: fnrg
+    help: "List all functions using compgen and ripgrep."
+    cmd:
+      zsh: "compgen -A function | rg"
+    platforms: [zsh]
+
+  - name: hg
+    help: "Search command history using ripgrep."
+    cmd:
+      zsh: "history | rg"
+    platforms: [zsh]
+
+  - name: lhg
+    help: "Search large history using lhistory and ripgrep."
+    cmd:
+      zsh: "lhistory | rg"
+    platforms: [zsh]
+
+  - name: rm
+    help: "Move files to trash instead of deleting them."
+    cmd:
+      zsh: "trash"
+    platforms: [zsh]
+
+  - name: bat
+    help: "bat command (as installed)."
+    cmd:
+      zsh: "bat"
+    platforms: [zsh]
+
+  - name: l
+    help: "List files (eza): no permissions, git info, icons, no user info."
+    cmd:
+      zsh: "ezaw --no-permissions --git --icons --no-user"
+    platforms: [zsh]
+
+  - name: ls
+    help: "List files in long format (eza): with permissions, git info, icons, modified time, smart grouping."
+    cmd:
+      zsh: >
+        ezaw -lah --no-permissions --git --icons --modified
+        --group-directories-first --smart-group --no-user
+    platforms: [zsh]
+
+  - name: la
+    help: "List all files (eza): show hidden files with classify and grid view."
+    cmd:
+      zsh: "ezaw -a --no-permissions --git --icons --classify --grid --group-directories-first"
+    platforms: [zsh]
+
+  - name: ll
+    help: "Long listing (eza): display created time, group directories first, smart grouping."
+    cmd:
+      zsh: "ezaw -lah --no-permissions --git --icons --modified --group-directories-first --smart-group"
+    platforms: [zsh]
+
+  - name: lls
+    help: "Long listing (eza): display created time, group directories first, smart grouping, total-size."
+    cmd:
+      zsh: "ezaw -lah --no-permissions --git --icons --modified --group-directories-first --smart-group --total-size"
+    platforms: [zsh]
+
+  - name: lll
+    help: "Long listing (eza): total size, created/modified times with icons and git info."
+    cmd:
+      zsh: "ezaw -lah --git --icons --modified --accessed --group-directories-first --smart-group --total-size"
+    platforms: [zsh]
+
+  - name: llll
+    help: "Long listing (eza): total size, created/modified times with icons and git info."
+    cmd:
+      zsh: >
+        ezaw -lah --all --header --group-directories-first --smart-group --icons --git
+        --time-style=iso --modified --accessed --changed --inode --links --sort=name
+        --reverse --hyperlink --absolute=on --blocksize --numeric
+    platforms: [zsh]
+
+  - name: lo
+    help: "List files (eza): without user, time, or filesize info."
+    cmd:
+      zsh: "ezaw -lah --no-permissions --git --icons --no-user --no-time --no-filesize"
+    platforms: [zsh]
+
+  - name: lg
+    help: "List files (eza): with created & modified times and git repository info."
+    cmd:
+      zsh: "ezaw -lah --no-permissions --git --icons --created --modified --group-directories-first --smart-group --git-repos"
+    platforms: [zsh]
+
+  - name: laha
+    help: "Advanced listing (eza): smart grouping with changed, accessed, and created times."
+    cmd:
+      zsh: "ezaw -lahSOnMIHZo@ --git --git-repos --icons --smart-group --changed --accessed --created"
+    platforms: [zsh]
+
+  - name: lss
+    help: "Sort files by size using eza."
+    cmd:
+      zsh: "ezaw --sort=size"
+    platforms: [zsh]
+
+  - name: lst
+    help: "Sort files by modification time using eza."
+    cmd:
+      zsh: "ezaw --sort=time"
+    platforms: [zsh]
+
+  - name: lse
+    help: "Sort files by file extension using eza."
+    cmd:
+      zsh: "ezaw --sort=extension"
+    platforms: [zsh]
+
+  - name: lx
+    help: "List files (eza): grid, classify, auto-color, sorted by type, with grouped directories."
+    cmd:
+      zsh: >
+        ezaw --icons --grid --classify --colour=auto --sort=type
+        --group-directories-first --header --modified --created --git --binary --group
+    platforms: [zsh]
+
+  - name: l1
+    help: "Tree view (eza): list directory tree at level 1."
+    cmd:
+      zsh: "ezaw --icons --classify --tree --level=1 --git"
+    platforms: [zsh]
+
+  - name: l2
+    help: "Tree view (eza): list directory tree at level 2."
+    cmd:
+      zsh: "ezaw --icons --classify --tree --level=2 --git"
+    platforms: [zsh]
+
+  - name: l3
+    help: "Tree view (eza): list directory tree at level 3."
+    cmd:
+      zsh: "ezaw --icons --classify --tree --level=3 --git"
+    platforms: [zsh]
+
+  - name: l4
+    help: "Tree view (eza): list directory tree at level 4."
+    cmd:
+      zsh: "ezaw --icons --classify --tree --level=4 --git"
+    platforms: [zsh]
+
+  - name: l5
+    help: "Tree view (eza): list directory tree at level 5."
+    cmd:
+      zsh: "ezaw --icons --classify --tree --level=5 --git"
+    platforms: [zsh]
+
+  # ←— newly re-added “long-tree” aliases
+  - name: lt1
+    help: "Long tree view (eza): directory tree at level 1."
+    cmd:
+      zsh: "ezaw --icons --classify --long --tree --level=1 --git"
+    platforms: [zsh]
+
+  - name: lt2
+    help: "Long tree view (eza): directory tree at level 2."
+    cmd:
+      zsh: "ezaw --icons --classify --long --tree --level=2 --git"
+    platforms: [zsh]
+
+  - name: lt3
+    help: "Long tree view (eza): directory tree at level 3."
+    cmd:
+      zsh: "ezaw --icons --classify --long --tree --level=3 --git"
+    platforms: [zsh]
+
+  - name: lt4
+    help: "Long tree view (eza): directory tree at level 4."
+    cmd:
+      zsh: "ezaw --icons --classify --long --tree --level=4 --git"
+    platforms: [zsh]
+
+  - name: lt5
+    help: "Long tree view (eza): directory tree at level 5."
+    cmd:
+      zsh: "ezaw --icons --classify --long --tree --level=5 --git"
+    platforms: [zsh]
+
+  - name: gpnew
+    help: "Git push new branch: set upstream to origin on current branch."
+    cmd:
+      zsh: "git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)"
+    platforms: [zsh]
+
+  - name: pcolors
+    help: "Print terminal colors (0-255) using a loop."
+    cmd:
+      zsh: |
+        for i in {0..255}; do
+          print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " \
+            ${${(M)$((i%6)):#3}:+$'\n'};
+        done
+    platforms: [zsh]
+
+  - name: fzcd
+    help: "Fuzzy find a directory and cd into it."
+    cmd:
+      zsh: "cd $(find . -type d | fzf)"
+    platforms: [zsh]
+
+  - name: fzcdp
+    help: "Fuzzy find a directory with a tree preview and cd into it."
+    cmd:
+      zsh: 'cd $(find . -type d | fzf --preview "tree -C {} | head -200")'
+    platforms: [zsh]
+
+  - name: fzh
+    help: "Fuzzy search command history using fzf."
+    cmd:
+      zsh: 'fzf --height 40% --reverse --preview "echo {}" --tac < <(history | cut -c 8-)'
+    platforms: [zsh]
+
+  - name: fzfp
+    help: "Fuzzy file finder with bat preview."
+    cmd:
+      zsh: 'fzf --preview "bat --style=numbers --color=always {}"'
+    platforms: [zsh]
+
+  - name: fzkill
+    help: "Fuzzy find a process and kill it."
+    cmd:
+      zsh: 'kill -9 $(ps -ef | fzf --preview "echo {}" | awk "{print \$2}")'
+    platforms: [zsh]
+
+  - name: fzssh
+    help: "Fuzzy SSH: select a hostname from known_hosts."
+    cmd:
+      zsh: 'ssh $(cat ~/.ssh/known_hosts | cut -f 1 -d " " | fzf)'
+    platforms: [zsh]
+
+  - name: fzgb
+    help: "Fuzzy git branch switch using fzf."
+    cmd:
+      zsh: 'git checkout $(git branch | fzf)'
+    platforms: [zsh]
+
+  - name: grao
+    help: "Add a new git remote called origin."
+    cmd:
+      zsh: "git remote add origin"
+    platforms: [zsh]
+
+  - name: gdup
+    help: "Fetch. Diff of changes to remote branch if local was pushed."
+    cmd:
+      zsh: "git fetch && git diff @{u}..HEAD"
+    platforms: [zsh]
+
+  - name: gdru
+    help: "Fetch. Diff of changes to local branch if remote was pulled."
+    cmd:
+      zsh: "git fetch && git diff HEAD..@{u}"
+    platforms: [zsh]
+
+  - name: gdsu
+    help: "Fetch. Diff of local and remote (combined)."
+    cmd:
+      zsh: "git fetch && git diff HEAD...@{u}"
+    platforms: [zsh]
+
+  - name: glru
+    help: "Fetch, then a commit-by-commit visual log of differences."
+    cmd:
+      zsh: "git fetch && git log --oneline --left-right --graph HEAD...@{u}"
+    platforms: [zsh]
+
+  - name: lsopts
+    help: "Print a list of all 'opt' values possible to set via 'setopt xxx'."
+    cmd:
+      zsh: "print -rl ${(k)options}"
+    platforms: [zsh]
+
+  - name: sshs
+    help: "SSH into slice and run arbitrary commands."
+    cmd:
+      zsh: "sshsx"
+    platforms: [zsh]
+
+  - name: sshsx
+    help: "SSH into slice via pwsh7 and run arbitrary commands."
+    cmd:
+      zsh: "sshsx"
+    platforms: [zsh]
+
+  - name: sshsp
+    help: "SSH into slice and run cdpon."
+    cmd:
+      zsh: "sshsx cdpo"
+    platforms: [zsh]
+
+  - name: sshspn
+    help: "SSH into slice and run cdpon."
+    cmd:
+      zsh: "sshsx cdpon"
+    platforms: [zsh]
+
+
+functions:
+  - name: retrycmd
+    help: "Runs a command or alias repeatedly until it succeeds; usage: retrycmd <command> [args...]"
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: mkcd
+    help: "Creates a directory if it doesn't exist and returns its full path."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: create_if_missing
+    help: "Creates a file if it doesn't exist."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: cdobs
+    help: "Prints the Obsidian directory path from the OBSIDIAN env var."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: get_file_size
+    help: "Gets the size of a file in bytes."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: hrg
+    help: "Search a program's help output for a pattern (tries --help, -h, -?, /?)."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: mkvi
+    help: "Creates a directory and opens a file using Neovim."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: lt
+    help: "Lists files in tree format up to the specified depth."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: ltf
+    help: "Runs lt with a specified depth and writes output to a file."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: fdtl
+    help: "Finds files by name, sorted by modification time, then runs eza -lt."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: fdta
+    help: "Finds files by name, sorted by modification time."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rg
+    help: "Runs ripgrep with default options."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgta
+    help: "Finds files containing a match, sorted by modification time."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgtf
+    help: "Prints matching lines in files, sorted by modification time."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgfn
+    help: "Finds files by content match, sorted by modification time."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgtc
+    help: "Finds files matching by content OR filename, sorted by modification time."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgtm
+    help: "Finds files matching by content OR filename, sorted by creation time."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgmax
+    help: "Returns top N files with the most matches for a phrase."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rgmaxn
+    help: "Alias for rgmax with default num_files=100."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rp
+    help: "Copy files via rsync under the hood with in-place progress."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rpv
+    help: "Verbose copy (rsync under the hood, very verbose)."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rpd
+    help: "Dry-run copy (rsync under the hood)."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rpi
+    help: "Copy ignoring existing files (rsync under the hood)."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: rpdel
+    help: "Copy then delete source files (rsync under the hood)."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: ag
+    help: "Show all aliases (using: alias | rg)."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: ahelp
+    help: "Search alias descriptions by keyword."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: fhelp
+    help: "Search function descriptions by keyword."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: helpall
+    help: "Search both function and alias descriptions by keyword."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: fg
+    help: "Search functions by name or description, highlighting matches."
+    impl: python
+    platforms: [zsh, powershell]
+
+  - name: functionsl
+    help: "Lists all registered functions and their descriptions."
+    impl: python
+    platforms: [zsh, powershell]
+
